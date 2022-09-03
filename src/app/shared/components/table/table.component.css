@@ -1,0 +1,10 @@
+.table-cell, .table-header {
+  text-align: center!important;
+}
+.table-action {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: center;
+  justify-content: space-evenly;
+}

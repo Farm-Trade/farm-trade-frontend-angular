@@ -1,0 +1,24 @@
+<p-table [value]="values" responsiveLayout="scroll" [loading]="loading">
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let header of headers" class="table-header">{{header}}</th>
+      <th *ngIf="actions.length" class="table-header">Actions</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-value>
+    <tr>
+      <td *ngFor="let key of keys" [ngSwitch]="key" class="table-cell">
+        <ng-container *ngSwitchCase="'balance'">{{value[key] | currency : 'USD'}}</ng-container>
+        <ng-container *ngSwitchCase="'commissionForTransfer'">{{value[key] | transferCommission}}</ng-container>
+        <ng-container *ngSwitchDefault>{{value[key]}}</ng-container>
+      </td>
+      <td *ngIf="actions.length" class="table-action">
+        <p-button
+          *ngFor="let action of actions"
+          [icon]="action.icon ? action.icon :''"
+          (click)="actionPerformed.emit({ id: action.id, target: value})"
+        ></p-button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
