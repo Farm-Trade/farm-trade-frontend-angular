@@ -1,1 +1,44 @@
-<p>player-update works!</p>
+<form [formGroup]="form">
+  <div class="form-field">
+    <label for="full-name">Full Name</label>
+    <input id="full-name" type="text" pInputText formControlName="fullName">
+  </div>
+  <div class="form-field">
+    <label for="birth-date">Date Of Birth</label>
+    <p-calendar
+      id="birth-date"
+      inputId="birth-date"
+      appendTo="body"
+      formControlName="dateOfBirth"
+      dateFormat="yy-mm-dd"
+    ></p-calendar>
+  </div>
+  <div class="form-field">
+    <label for="career-start">Start Of Career</label>
+    <p-calendar
+      id="career-start"
+      inputId="career-start"
+      appendTo="body"
+      formControlName="startOfCareer"
+      dateFormat="yy-mm-dd"
+      [minDate]="form.get('dateOfBirth')?.value || 0"
+    ></p-calendar>
+  </div>
+  <div class="form-field">
+    <label for="team">Team</label>
+    <p-dropdown
+      id="team"
+      inputId="team"
+      [options]="(teams$ | async) || []"
+      optionLabel="name"
+      dataKey="id"
+      [showClear]="false"
+      appendTo="body"
+      formControlName="team"
+    ></p-dropdown>
+  </div>
+  <div class="button-box">
+    <button pButton pRipple type="button" label="Cancel" (click)="close()"></button>
+    <button pButton pRipple type="button" [disabled]="form.invalid" label="Save" class="p-button-success" (click)="save()"></button>
+  </div>
+</form>

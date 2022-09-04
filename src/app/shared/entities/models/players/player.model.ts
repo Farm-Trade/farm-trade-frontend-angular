@@ -3,11 +3,11 @@ import {Team} from "../teams/team.model";
 export class Player {
 
   constructor(
-    public id: number,
-    public fullName: string,
-    public dateOfBirth: string,
-    public startOfCareer: string,
-    public team : Team
+    public id?: number,
+    public fullName: string = '',
+    public dateOfBirth: string = '',
+    public startOfCareer: string = '',
+    public team?: Team
   ) {
   }
 

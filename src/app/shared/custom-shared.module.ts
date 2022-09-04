@@ -8,6 +8,7 @@ import { TableComponent } from './components/table/table.component';
 import {TableModule} from "primeng/table";
 import {HttpClientModule} from "@angular/common/http";
 import { TransferCommissionPipe } from './pipes/transfer-commission.pipe';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TransferCommissionPipe } from './pipes/transfer-commission.pipe';
     PrimeSharedNgModule,
     SharedModule,
     TableModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   exports: [
     PrimeSharedNgModule,
@@ -29,7 +31,8 @@ import { TransferCommissionPipe } from './pipes/transfer-commission.pipe';
     FooterComponent,
     TableComponent,
     HttpClientModule,
-    TransferCommissionPipe
+    TransferCommissionPipe,
+    BrowserAnimationsModule
   ],
   providers: []
 })

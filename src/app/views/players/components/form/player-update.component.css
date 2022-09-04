@@ -1,0 +1,24 @@
+form {
+  height: 100%;
+}
+form input {
+  width: 100%;
+}
+
+form .form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+form .form-field label {
+  margin: 5px 0;
+}
+
+form .button-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form .button-box button {
+  margin: 10px 0 0 5px;
+}

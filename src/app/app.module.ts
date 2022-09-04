@@ -11,6 +11,11 @@ import {PlayersService} from "./views/players/services/players.service";
 import { TeamUpdateComponent } from './views/teams/screen/form/team-update.component';
 import {MessageModule} from "primeng/message";
 import { PlayerUpdateComponent } from './views/players/components/form/player-update.component';
+import {DialogService} from "primeng/dynamicdialog";
+import {CalendarModule} from "primeng/calendar";
+import {DropdownModule} from "primeng/dropdown";
+import {RippleModule} from "primeng/ripple";
+import {FormBuilder, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,11 +29,17 @@ import { PlayerUpdateComponent } from './views/players/components/form/player-up
     CustomSharedModule,
     CommonModule,
     AppRoutingModule,
-    MessageModule
+    MessageModule,
+    CalendarModule,
+    DropdownModule,
+    RippleModule,
+    ReactiveFormsModule
   ],
   providers: [
     TeamsService,
-    PlayersService
+    PlayersService,
+    DialogService,
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })

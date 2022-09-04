@@ -1,6 +1,12 @@
+<p-button
+  label="Add New"
+  [style]="{ marginBottom: '10px' }"
+  (click)="onCreate()"
+></p-button>
 <app-data-table
   [values]="players"
   [headers]="headers"
   [keys]="keys"
   [actions]="actions"
+  (actionPerformed)="onActionHandler($event)"
 ></app-data-table>
