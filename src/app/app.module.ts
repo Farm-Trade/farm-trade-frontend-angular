@@ -8,17 +8,23 @@ import {AppRoutingModule} from "./app-routing.module";
 import {TeamsService} from "./views/teams/services/teams.service";
 import { PlayerComponent } from './views/players/components/table/player.component';
 import {PlayersService} from "./views/players/services/players.service";
+import { TeamUpdateComponent } from './views/teams/screen/form/team-update.component';
+import {MessageModule} from "primeng/message";
+import { PlayerUpdateComponent } from './views/players/components/form/player-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeamsComponent,
-    PlayerComponent
+    PlayerComponent,
+    TeamUpdateComponent,
+    PlayerUpdateComponent
   ],
   imports: [
     CustomSharedModule,
     CommonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MessageModule
   ],
   providers: [
     TeamsService,

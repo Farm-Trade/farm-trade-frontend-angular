@@ -1,10 +1,10 @@
 export class Team {
 
   constructor(
-    public id: number,
-    public name: string,
-    public commissionForTransfer: number,
-    public balance: number
+    public id?: number,
+    public name: string = '',
+    public commissionForTransfer: number = 0,
+    public balance: number = 0
   ) {
   }
 

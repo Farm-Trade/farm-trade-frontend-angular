@@ -3,6 +3,7 @@ import {Team} from "../../../../shared/entities/models/teams/team.model";
 import {TeamsService} from "../../services/teams.service";
 import {TableAction} from "../../../../shared/entities/interfaces/table-action.interface";
 import {delay, finalize, Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-table',
@@ -20,7 +21,8 @@ export class TeamsComponent implements OnInit, OnDestroy {
   public loading: boolean;
 
   constructor(
-    private readonly teamsService: TeamsService
+    private readonly teamsService: TeamsService,
+    private readonly router: Router
   ) {
     this.headers = ['ID', 'Name', 'Commission For Transfer', 'Balance'];
     this.keys = ['id', 'name', 'commissionForTransfer', 'balance'];
@@ -40,9 +42,12 @@ export class TeamsComponent implements OnInit, OnDestroy {
   }
 
   public onActionHandler(event: { id: string, target: Team }): void {
+    if (!event.target.id) {
+      return;
+    }
     switch (event.id) {
       case 'edit':
-        console.log(event.id, event.target);
+        this.onEdit(event.target.id);
         break;
       case 'delete':
         this.onDelete(event.target.id);
@@ -66,5 +71,9 @@ export class TeamsComponent implements OnInit, OnDestroy {
       .pipe(finalize(() => this.loading = false))
       .subscribe(() => this.getTeams());
     this.subscriptions$.add(deleteTeam$);
+  }
+
+  private onEdit(id: number): void {
+    this.router.navigate(['teams', id]);
   }
 }
