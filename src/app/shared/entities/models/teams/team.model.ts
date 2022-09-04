@@ -15,5 +15,7 @@ export class Team {
       team.commissionForTransfer,
       team.balance,
     );
+
+
   }
 }

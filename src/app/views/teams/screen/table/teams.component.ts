@@ -16,7 +16,7 @@ export class TeamsComponent implements OnInit, OnDestroy {
   public keys: string[];
   public actions: TableAction[];
 
-  public subsections$: Subscription = new Subscription();
+  public subscriptions$: Subscription = new Subscription();
   public loading: boolean;
 
   constructor(
@@ -36,7 +36,7 @@ export class TeamsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subsections$.unsubscribe();
+    this.subscriptions$.unsubscribe();
   }
 
   public onActionHandler(event: { id: string, target: Team }): void {
@@ -53,11 +53,11 @@ export class TeamsComponent implements OnInit, OnDestroy {
   private getTeams(): void {
     this.loading = true;
     const getTeams$: Subscription = this.teamsService.getTeams()
-      .pipe(delay(10000),finalize(() => this.loading = false))
+      .pipe(finalize(() => this.loading = false))
       .subscribe(teams => {
         this.teams = teams;
       });
-    this.subsections$.add(getTeams$);
+    this.subscriptions$.add(getTeams$);
   }
 
   private onDelete(id: number): void {
@@ -65,6 +65,6 @@ export class TeamsComponent implements OnInit, OnDestroy {
     const deleteTeam$: Subscription = this.teamsService.deleteTeam(id)
       .pipe(finalize(() => this.loading = false))
       .subscribe(() => this.getTeams());
-    this.subsections$.add(deleteTeam$);
+    this.subscriptions$.add(deleteTeam$);
   }
 }

@@ -10,6 +10,7 @@
       <td *ngFor="let key of keys" [ngSwitch]="key" class="table-cell">
         <ng-container *ngSwitchCase="'balance'">{{value[key] | currency : 'USD'}}</ng-container>
         <ng-container *ngSwitchCase="'commissionForTransfer'">{{value[key] | transferCommission}}</ng-container>
+        <ng-container *ngSwitchCase="'team'">{{value[key].name}}</ng-container>
         <ng-container *ngSwitchDefault>{{value[key]}}</ng-container>
       </td>
       <td *ngIf="actions.length" class="table-action">

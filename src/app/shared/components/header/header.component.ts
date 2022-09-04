@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Players',
         icon: 'pi pi-fw pi-user',
-        command: this.goToPlayers
+        command: this.goToPlayers.bind(this)
       }
     ];
   }
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   goToPlayers(): void {
-    console.log('goToPlayers');
+    this.router.navigate(['players'])
   }
   goToTeams(): void {
     this.router.navigate(['teams']);
